@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Heart, Shield, Users, Clock } from "lucide-react";
 import Image from "next/image";
 import Count from "@/components/sharedComponents/Count";
+import { useInView } from "framer-motion";
 
 export default function AboutUsSection() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
   const features = [
     {
       icon: Heart,
@@ -147,6 +150,7 @@ export default function AboutUsSection() {
 
         {/* Stats Section */}
         <div
+          ref={sectionRef}
           className="rounded-2xl p-8 md:p-12"
           style={{ backgroundColor: "#3490c5" }}
         >
@@ -155,7 +159,7 @@ export default function AboutUsSection() {
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center mb-2">
                   <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-                    <Count number={stat.number}></Count>
+                    {isInView ? <Count number={stat.number}></Count> : 0}
                   </div>
                   <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                     {stat.sign}

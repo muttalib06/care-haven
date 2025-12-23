@@ -1,6 +1,7 @@
 import AboutUs from "@/components/home/aboutUs/AboutUs";
 import HeroSlider from "@/components/home/banner/HeroSlider";
 import ServicesSection from "@/components/home/services/ServicesSection";
+import TestimonialsSection from "@/components/home/testimonial/TestimonialSection";
 import React from "react";
 
 function page(props) {
@@ -13,6 +14,9 @@ function page(props) {
 
       {/* service overview section */}
       <ServicesSection></ServicesSection>
+
+      {/* testimonial section */}
+      <TestimonialsSection></TestimonialsSection>
     </div>
   );
 }
