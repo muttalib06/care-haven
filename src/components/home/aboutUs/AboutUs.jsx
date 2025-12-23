@@ -3,7 +3,7 @@
 import React from "react";
 import { Heart, Shield, Users, Clock } from "lucide-react";
 import Image from "next/image";
-
+import Count from "@/components/sharedComponents/Count";
 
 export default function AboutUsSection() {
   const features = [
@@ -27,21 +27,21 @@ export default function AboutUsSection() {
     },
     {
       icon: Clock,
-      title: "24/7 Availability",
+      title: "242 Availability",
       description:
         "Book care services anytime, anywhere with our easy-to-use platform and flexible scheduling.",
     },
   ];
 
   const stats = [
-    { number: "10,000+", label: "Families Served" },
-    { number: "5,000+", label: "Verified Caretakers" },
-    { number: "98%", label: "Satisfaction Rate" },
-    { number: "24/7", label: "Support Available" },
+    { number: 10000, sign: "+", label: "Families Served" },
+    { number: 5000, sign: "+", label: "Verified Caretakers" },
+    { number: 98, sign: "%", label: "Satisfaction Rate" },
+    { number: 242, sign: "+", label: "Support Available" },
   ];
 
   return (
-    <section className="py-16 px-4 md:py-24 bg-gradient-to-b from-white to-blue-50">
+    <section className="py-16 px-4 md:py-24 bg-linear-to-b from-white to-blue-50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -153,9 +153,14 @@ export default function AboutUsSection() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  {stat.number}
-                </p>
+                <div className="flex items-center justify-center mb-2">
+                  <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                    <Count number={stat.number}></Count>
+                  </div>
+                  <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                    {stat.sign}
+                  </p>
+                </div>
                 <p className="text-blue-100 text-sm md:text-base">
                   {stat.label}
                 </p>
